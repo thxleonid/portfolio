@@ -1,0 +1,37 @@
+.levels {
+  display: flex;
+  height: 100vh;
+  overflow-y: hidden;
+  scroll-behavior: smooth; 
+}
+
+.level {
+  display: flex;
+  flex-direction: column;
+  height: 150vh;
+  
+}
+
+.levelContainer {
+  display: flex;
+  gap: 200px;
+  align-items: flex-end;
+  position: relative;
+  
+}
+
+.parallax-1 {
+  display: flex;
+  position: absolute;   
+  bottom: 0;
+  z-index: 1;
+  height: 100%;
+}
+
+.parallax-front {
+  z-index: 4;
+}
+
+.css-0 {
+  opacity: 0;
+}

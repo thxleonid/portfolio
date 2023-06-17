@@ -1,0 +1,9 @@
+.pyramid {
+    margin-left: 1200px;
+    
+    display: flex;
+    align-items: flex-end;
+  }
+.pyramid > img {
+  height: 30%;
+}

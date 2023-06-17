@@ -1,0 +1,25 @@
+.mainCont {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.el {
+    width: 100px;
+    height: 400px;
+}
+
+.el1 {
+    background-color: green;
+}
+
+.el2 {
+    background-color: red;
+}
+
+.el3 {
+    background-color: gray;
+}
+
+.el4 {
+    background-color: blue;
+}
