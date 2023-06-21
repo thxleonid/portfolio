@@ -18,6 +18,11 @@ table {
     font-size: 15px;
 }
 
+.tableArea {
+    position: relative;
+    flex: 1;
+}
+
 td {
     width: 120px;
 }
@@ -49,7 +54,6 @@ tbody {
     bottom: 0;
     right: 0;
     overflow: hidden;
-
     display: flex;
 }
 

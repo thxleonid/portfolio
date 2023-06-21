@@ -8,9 +8,10 @@ export default function Table({ children, title, isHorizontal, headItems, rowIte
     const rowNum = rowItems.length;
 
     return (
-    <div className='parallax-front tableBlock'>
+    <div className={`parallax-front tableBlock ${isHorizontal ? 'horizontalTable' : 'verticalTable'}`}>
         <h1>{title}</h1>
-        <table className={`${isHorizontal ? 'horizontalTable' : 'verticalTable'}`}>
+        <div className='tableArea'>
+        <table>
             <thead>
                 <tr>
                     {headItems.map((item, index) => 
@@ -29,18 +30,17 @@ export default function Table({ children, title, isHorizontal, headItems, rowIte
                     :
                     (   <tr>
                             <td>{item}</td>
-                            <td>
-                                <div className='skillBar-container'>
-                                    {children}
-                                    {!isHorizontal && <div className='skillBar'></div>}
-                                </div>
-                            </td>
-                            {headItems.slice(0, headItems.length-2).map(() => <td></td>)}
+                            {headItems.slice(0, headItems.length-1).map(() => <td></td>)}
                         </tr>
                     ))}
                 {!isHorizontal && <tr>{headItems.map(() => <td></td>)}</tr>}    
             </tbody>
         </table>
+        <div className='skillBar-container'>
+            {children}
+            {!isHorizontal && <div className='skillBar'></div>}
+        </div>
+        </div>
     </div>
     )
 }
