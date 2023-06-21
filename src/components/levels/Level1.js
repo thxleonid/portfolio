@@ -4,6 +4,7 @@ import start from '../../img/level1/start.png';
 import Cloud from '../elements/cloud';
 import Pyramid from '../elements/pyramid';
 import GroundBlock from '../elements/groundBlock';
+import Table from '../elements/table';
 
 import church from '../../img/level1/Tallinn/church.png';
 import hall from '../../img/level1/Tallinn/hall.png';
@@ -13,23 +14,26 @@ import LevelBase from './LevelBase';
 
 import { Slide, Fade } from "react-awesome-reveal";
 import { Parallax } from 'react-scroll-parallax';
+import SkillBar from '../elements/skillBar';
+import Background from './Background';
 
 import LevelOptions from '../../levelOptions';
 
 
 export default function Level1() {
     let obstacle = require('../../img/surfaces/groundObstacle.png')
+    let cactus = require('../../img/cactus.png')
     return (
         <LevelBase name='level1'>
-            <Parallax speed={-40} className='parallax-1' triggeronce={'true'}>
+            <Background isStretched={false} speed={-40}>
                 <Cloud />
                 <Cloud />
                 <Cloud />
-            </Parallax>
+            </Background>
 
-            <Parallax speed={-20} className='parallax-1' triggeronce={'true'}>
+            <Background isStretched={false} speed={-20}>
                 <Pyramid />
-            </Parallax>
+            </Background>
             
 
             <div className='title parallax-front'>
@@ -42,12 +46,27 @@ export default function Level1() {
 
             <GroundBlock obstacle={obstacle} />
 
+            <Table 
+                title='Marketing Development Expert'
+                isHorizontal={true}
+                headItems={['Development', 'Analytics', 'Online marketing']} 
+                rowItems={['EXPERT', 'ADVANCED', 'INTERMEDIATE', 'ELEMENTARY', 'BEGINNER']}
+            >
+                <Slide className='skillBar' delay={500} direction='up' >
+                    <SkillBar image={cactus} level={100} />
+                    <SkillBar image={cactus} level={80} />
+                    <SkillBar image={cactus} level={90} />
+                </Slide>
+            </Table>
+            
+            <GroundBlock obstacle={obstacle} />
+
             <div className='city parallax-front'>
                 <div>
                     <h2>Live, Work & Chill in Tallinn</h2>
                 </div>
                 <div className='visuals'>
-                    <Slide delay={100} direction='right' className='visual' cascade triggeronce={true}>
+                    <Slide delay={100} direction='right' className='visual' triggerOnce={true}>
                         <img src={church} alt="Church in Tallinn" id='city-church' />
                         <img src={hall} alt="Town hall in Tallinn" id='city-hall' />
                         <img src={tower} alt="TV Tower in Tallinn" id='city-tower' />
@@ -57,46 +76,6 @@ export default function Level1() {
 
             <GroundBlock obstacle={obstacle} />
             
-            <table className='parallax-front'>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Development</th>
-                        <th>Analytics</th>
-                        <th>Online marketing</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colSpan="4">EXPERT</td>
-                    </tr>
-                    <tr>
-                        <td colSpan="4">ADVANCED</td>
-                    </tr>
-                    <tr>
-                        <td colSpan="4">INTERMEDIATE</td>
-                    </tr>
-                    <tr>
-                        <td colSpan="4">ELEMENTARY</td>
-                    </tr>
-                    <tr>
-                        <td>BEGINNER</td>
-                        <td colSpan="3">
-                            <div className='skillBar-container'>
-                                <Slide className='skillBar' delay={500} direction='up' >
-                                    <div style={{'height' : '60%'}}/>
-                                    <div style={{'height' : '90%'}}/>
-                                    <div style={{'height' : '85%'}}/>
-                                </Slide>
-                            </div>
-
-                        </td>
-                    </tr>
-                    
-                    
-                </tbody>
-                
-            </table>
         </LevelBase>
     );
 }

@@ -1,0 +1,15 @@
+.jetpack {
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    height: 15%;
+    margin: 20px;
+
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}

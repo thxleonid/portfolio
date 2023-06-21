@@ -8,7 +8,7 @@
 .level {
   display: flex;
   flex-direction: column;
-  height: 150vh;
+  height: 160vh;
   
 }
 
@@ -17,15 +17,8 @@
   gap: 200px;
   align-items: flex-end;
   position: relative;
+  overflow: hidden;
   
-}
-
-.parallax-1 {
-  display: flex;
-  position: absolute;   
-  bottom: 0;
-  z-index: 1;
-  height: 100%;
 }
 
 .parallax-front {
@@ -34,4 +27,10 @@
 
 .css-0 {
   opacity: 0;
+}
+
+@keyframes floating {
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(0, 15px); }
+  100%   { transform: translate(0, -0px); }   
 }

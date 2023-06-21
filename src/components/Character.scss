@@ -11,7 +11,7 @@
     
   }
 
-  .char-img {
+.char-img {
     background-image: url('../img/character/idle.png');
     background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
@@ -21,11 +21,25 @@
     height: 100%
   }
   
-  .walking {
+.walking {
     background-image: url('../img/character/walk.png');
   }
   
 .movedUp {
   transform: translateY(-50px);
   transition: transform 0.3s cubic-bezier(0.18, -0, 0.17, 3.55);
+}
+
+.flying {
+  .char-img {
+    background-image: url('../img/character/flying.png');
+  }
+  bottom: 70vh;
+  transition: bottom 1s ease;
+
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  
 }

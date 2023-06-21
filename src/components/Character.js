@@ -1,8 +1,6 @@
 import LevelOptions from "../levelOptions";
 import './Character.scss'
 import { useEffect, useRef} from 'react';
-import idle from '../img/character/idle.png'
-import walk from '../img/character/walk.png'
 
 function getOffset(el) {
   const rect = el.getBoundingClientRect();
@@ -15,57 +13,22 @@ const Character = () => {
   const groundBlockElements = useRef([]);
   const levelElements = useRef([]);
   const levels = useRef();
+  const jetpacks = useRef([]);
+  
   let currentLevel;
   let moved = false;
   let prevCharPos = 0;
   let charRight = true;
   let timerId = null;
-
-  const detectLevel = () => {
-    const characterLeft = getOffset(characterRef.current);
-    const characterRight = characterLeft + characterRef.current.offsetWidth;
-  
-    let height;
-    for (const level of levelElements.current) {
-      const levelOffset = getOffset(level);
-      const levelWidth = level.offsetWidth;
-  
-      //currentLevel = `${level.classList.item(1)}`
-  
-      if (characterRight >= levelOffset && characterLeft <= levelOffset + levelWidth) {
-        if (currentLevel === level.classList.item(1)) break;
-
-        currentLevel = `${level.classList.item(1)}`
-  
-        if (LevelOptions[currentLevel].height < 100) {
-          console.log('scroll')
-          levels.current.scrollTop = 0
-          height = 100 - LevelOptions[currentLevel].height
-          
-        } else {
-          console.log('scroll')
-          levels.current.scrollTop = level.scrollHeight
-          // levels.current.scrollTo({
-          //   top: level.scrollHeight,
-          //   behavior: 'smooth',
-          // });
-          height = 150 - LevelOptions[currentLevel].height
-        }
-        break;
-      }
-    }
-    characterRef.current.style.bottom = `${height}vh`
-  }
+  let height;
 
   const visualCharacter = () => {
+    
+
     const characterLeft = getOffset(characterRef.current);
     const charImg = characterRef.current.firstChild;
 
-    charImg.classList.add('walking');
-    clearTimeout(timerId);
-    timerId = setTimeout(() => {
-      charImg.classList.remove('walking');
-    }, 150);
+    
 
     // pointing character in the right direction
     if (characterLeft > prevCharPos && !charRight) {
@@ -76,16 +39,79 @@ const Character = () => {
       charRight = false;
     }
     prevCharPos = characterLeft;
+    if (characterRef.current.classList.contains('flying')) return;
+
+    charImg.classList.add('walking');
+    clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      charImg.classList.remove('walking');
+    }, 150);
+
+    
+  }
+
+  const getLevelHeight = () => {
+    const characterLeft = getOffset(characterRef.current);
+    const characterRight = characterLeft + characterRef.current.offsetWidth;
+
+    
+    
+    for (const level of levelElements.current) {
+      const levelOffset = getOffset(level);
+      const levelWidth = level.offsetWidth;
+  
+      //currentLevel = `${level.classList.item(1)}`
+  
+      if (characterRight >= levelOffset && characterLeft <= levelOffset + levelWidth) {
+        if (currentLevel === level.classList.item(1)) return;
+
+        currentLevel = `${level.classList.item(1)}`
+
+        LevelOptions[currentLevel].alignTop ? 
+          //levels.current.scrollTop = 0 : 
+          //levels.current.scrollTop = 0 :
+          levels.current.scrollTop = 0 : 
+          levels.current.scrollTop = level.scrollHeight;
+  
+        height = 100 - LevelOptions[currentLevel].skyHeight
+        
+        console.log('new level')
+        break;
+      }
+    }
+    
   }
   
   const positionCharacter = () => {
     //const scrollOffset = window.scrollX;
     const characterLeft = getOffset(characterRef.current);
     const characterRight = characterLeft + characterRef.current.offsetWidth;
+    
+    getLevelHeight()
 
+    if (characterLeft < getOffset(jetpacks.current[0])) {
+      characterRef.current.classList.remove('flying')
+      jetpacks.current[0].style.opacity = 100;
+      jetpacks.current[1].style.opacity = 0;
+    } else if (characterLeft > getOffset(jetpacks.current[1])) {
+      characterRef.current.classList.remove('flying')
+      jetpacks.current[0].style.opacity = 0;
+      jetpacks.current[1].style.opacity = 100;
+    } else {
+      characterRef.current.classList.add('flying')
+      characterRef.current.classList.remove('movedUp');
+      characterRef.current.style.removeProperty('bottom')
+      jetpacks.current[0].style.opacity = 0;
+      jetpacks.current[1].style.opacity = 0;
+      return
+    }
+    characterRef.current.style.bottom = `${height}vh`
     
 
-    detectLevel()
+
+
+
+    
 
     //if (isAnimating.current) return;
 
@@ -97,7 +123,7 @@ const Character = () => {
 
       if (characterRight >= groundBlockOffset && characterLeft <= groundBlockOffset + groundBlockWidth) {
         targetGroundElement = groundBlockElement;
-        console.log('found block')
+        
         break;
       }
     }
@@ -124,6 +150,7 @@ const Character = () => {
       groundBlockElements.current = Array.from(document.querySelectorAll('.groundBlock'));
       levelElements.current = Array.from(document.querySelectorAll('.level'));
       levels.current = document.querySelectorAll('.levels')[0];
+      jetpacks.current = Array.from(document.querySelectorAll('.jetpack'));
       
       // Position the character initially
       positionCharacter(); 

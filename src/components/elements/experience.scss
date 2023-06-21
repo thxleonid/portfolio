@@ -1,0 +1,49 @@
+.experienceBlock {
+    height: 100%;
+    min-width: 100px;
+    z-index: 4;
+    position: relative;
+
+    img {
+        max-height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    text {
+        p, h5 {
+            margin: 3px;
+        }
+        
+        top: 32%;
+        left: 6%;
+        width: 58%;
+        height: 54%;
+        word-wrap: break-word;
+        display: block;
+        position: absolute;
+        overflow: hidden;
+        font-size: calc(2.2vh);
+    }
+
+    .stamp {
+        p {
+            position: inherit;
+        }
+
+        transform: rotate(15deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: calc(1.5vh);
+        position: absolute;
+        max-height: 30%;
+        width: 20%;
+        object-fit: contain;
+
+        bottom: 8%;
+        left: 50%;
+    }
+}
+

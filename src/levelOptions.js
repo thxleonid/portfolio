@@ -1,12 +1,29 @@
 const LevelOptions = {
     level1: {
-                height: 70,
-                background: 'groundTile.png'
-            },
+        skyHeight: 70,
+        alignTop: true,
+        background: 'groundTile.png',
+        },
     level2: {
-                height: 130,
-                background: 'seaTile.png'
-            }
+        skyHeight: 90,
+        alignTop: false,
+        background: 'seaTile.png'
+        },
+    level3: {
+        skyHeight: 70,
+        alignTop: true,
+        background: 'factoryTile.png'
+        },
+    level4: {
+        skyHeight: 90,
+        alignTop: true,
+        background: 'seaTile.png'
+    },
+    level5: {
+        skyHeight: 50,
+        alignTop: true,
+        background: 'groundTile.png'
+    }
 }
 
 export default LevelOptions;

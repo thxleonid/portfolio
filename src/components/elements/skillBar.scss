@@ -1,0 +1,14 @@
+.skillBar {
+
+    div {
+        display: flex;
+        width: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+}
+
+.horizontalTable .skillBar div {
+    background-size: 100% 100%;
+}
