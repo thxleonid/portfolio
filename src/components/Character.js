@@ -59,11 +59,10 @@ const Character = () => {
     for (const level of levelElements.current) {
       const levelOffset = getOffset(level);
       const levelWidth = level.offsetWidth;
-  
-      //currentLevel = `${level.classList.item(1)}`
+
   
       if (characterRight >= levelOffset && characterLeft <= levelOffset + levelWidth) {
-        if (currentLevel === level.classList.item(1)) return;
+        //if (currentLevel === level.classList.item(1)) return;
 
         currentLevel = `${level.classList.item(1)}`
 
