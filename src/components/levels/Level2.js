@@ -31,7 +31,7 @@ import Background from './Background';
                     headItems={['BEGINNER', 'ELEMENTARY', 'INTERMEDIATE', 'ADVANCED', 'EXPERT']} 
                     rowItems={['Python', 'JavaScript', 'VBA', 'React.JS']}
                 >
-                    <Slide className='skillBar' delay={500} direction='right' cascade triggerOnce={true} >
+                    <Slide className='skill-bar' delay={500} direction='right' cascade triggerOnce={true} >
                         <SkillBar image={fish1} number={5} />
                         <SkillBar image={fish1} number={3} />
                         <SkillBar image={fish1} number={4} />
@@ -47,7 +47,7 @@ import Background from './Background';
                     headItems={['BEGINNER', 'ELEMENTARY', 'INTERMEDIATE', 'ADVANCED', 'EXPERT']} 
                     rowItems={['Analytics', 'Creativity', 'Strategy', 'SEM']}
                 >
-                    <Slide className='skillBar' delay={500} direction='right' cascade triggerOnce={true} fraction={0.75}>
+                    <Slide className='skill-bar' delay={500} direction='right' cascade triggerOnce={true} fraction={0.75}>
                         <SkillBar image={fish2} number={5} />
                         <SkillBar image={fish2} number={3} />
                         <SkillBar image={fish2} number={4} />

@@ -1,0 +1,106 @@
+.tableBlock {
+    h1 {
+        background-color: lightgreen;
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90%;
+}
+
+table {
+    height: 100%;
+    color: white;
+    font-weight: bold;
+    bottom: 0;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.tableArea {
+    position: relative;
+    flex: 1;
+}
+
+td {
+    width: 120px;
+}
+
+th {
+    padding: 0;
+
+    span {
+        background-color: white;
+        color: grey
+    }
+}
+
+
+thead tr {
+    height: 30px;
+    vertical-align: top;
+}
+
+tbody {
+    position: relative;
+}
+
+
+.skillBar-container {
+
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    display: flex;
+}
+
+.horizontalTable {
+    tbody tr {
+        border-top:1px solid white;
+        vertical-align: top;
+    }
+
+    .skillBar-container {
+        width: 75%;
+        align-items: flex-end;
+        justify-content: space-around;
+    }
+
+    .skillBar {
+        width: 30px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+}
+
+.verticalTable {
+
+    tr {
+        height: 20%;
+    }
+
+    tr > :not(:first-child) {
+        border-right: 2px solid white;
+        text-align: right;
+    }
+
+    .skillBar-container {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        width: calc(100%/6*5);
+    }
+
+    .skillBar {
+        width: 100%;
+        flex: 1;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+}

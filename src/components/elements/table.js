@@ -4,43 +4,41 @@ import { Slide } from "react-awesome-reveal";
 
 export default function Table({ children, title, isHorizontal, headItems, rowItems }) {
 
-    headItems.unshift('');
     const rowNum = rowItems.length;
+    const colNum = headItems.length
 
     return (
-    <div className={`parallax-front tableBlock ${isHorizontal ? 'horizontalTable' : 'verticalTable'}`}>
-        <h1>{title}</h1>
-        <div className='tableArea'>
-        <table>
-            <thead>
-                <tr>
-                    {headItems.map((item, index) => 
-                        <th><span>{item}</span></th>
-                    )}
-                </tr>
-            </thead>
-            <tbody>
-                {rowItems.map((item, index) => 
-                    index < rowNum - 1 ? 
-                    (   <tr>
-                            <td>{item}</td>
-                            {headItems.slice(0, headItems.length-1).map(() => <td></td>)}
-                        </tr>
-                    )
-                    :
-                    (   <tr>
-                            <td>{item}</td>
-                            {headItems.slice(0, headItems.length-1).map(() => <td></td>)}
-                        </tr>
-                    ))}
-                {!isHorizontal && <tr>{headItems.map(() => <td></td>)}</tr>}    
-            </tbody>
-        </table>
-        <div className='skillBar-container'>
-            {children}
-            {!isHorizontal && <div className='skillBar'></div>}
+        <div className='table-block'>
+            <h1><span>{title}</span></h1>
+            <div className={`table__main-area ${isHorizontal ? 'horizontalTable' : 'verticalTable'} parallax-front` } >
+                <div className='table__head'>
+                    <div className='first--column' />
+                    <div className='main--part' >
+                        {headItems.map((item, index) => <div className='table__cell'><span>{item}</span></div>)}
+                    </div>
+                </div>
+                <div className='table__body'>
+                    <div className='first--column' >
+                        {rowItems.map((item, index) => <div className='table__cell'>{item}</div>)}
+                        {!isHorizontal && <div className='table__cell' />}
+                    </div>
+                    <div className='main--part' >
+                        {isHorizontal ? 
+                            rowItems.map(() => 
+                                <div className='table__cell' />
+                            )
+                            :
+                            headItems.map(() => 
+                                <div className='table__cell' />
+                            )
+                        }
+                        <div className='skill-bar__container'>
+                            {children}
+                            {!isHorizontal && <div className='skill-bar'></div>}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
-    </div>
     )
 }

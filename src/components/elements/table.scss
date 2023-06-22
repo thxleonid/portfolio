@@ -1,54 +1,64 @@
-.tableBlock {
-    h1 {
+.table-block {
+    span {
         background-color: lightgreen;
     }
 
+    height: 90%;
+    width: 700px;
+
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: 90%;
+    text-align: center;
 }
 
-table {
-    height: 100%;
-    color: white;
-    font-weight: bold;
-    bottom: 0;
-    border-collapse: collapse;
-    font-size: 15px;
-}
-
-.tableArea {
-    position: relative;
+.table__main-area {
     flex: 1;
-}
-
-td {
-    width: 120px;
-}
-
-th {
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    color: white;
 
     span {
+        display: inline;
         background-color: white;
         color: grey
     }
 }
 
-
-thead tr {
-    height: 30px;
-    vertical-align: top;
+.table__head {
+    display: flex;
 }
 
-tbody {
+.first--column {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main--part {
+
+    flex: 1 1 0;
+    display: flex;
+
+    text-align: center;
+}
+
+.table__cell {
+    flex: 1 1 0;
+}
+
+.table__body {
+    flex: 1;
+    display: flex;
+
+}
+
+
+.main--part {
     position: relative;
 }
 
-
-.skillBar-container {
-
+.skill-bar__container {
+    width: 100%;
     height: 100%;
     position: absolute;
     bottom: 0;
@@ -58,49 +68,39 @@ tbody {
 }
 
 .horizontalTable {
-    tbody tr {
-        border-top:1px solid white;
-        vertical-align: top;
+    text-align: left;
+
+    .table__body {
+        .table__cell {
+            border-top:1px solid white;
+        }
+
+        .main--part {
+            flex-direction: column;
+        }
     }
 
-    .skillBar-container {
-        width: 75%;
+    .skill-bar__container {
         align-items: flex-end;
         justify-content: space-around;
-    }
-
-    .skillBar {
-        width: 30px;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
     }
 }
 
 .verticalTable {
-
-    tr {
-        height: 20%;
+    
+    .first--column .table__cell {
+        display: flex;
+        align-items: center;
     }
 
-    tr > :not(:first-child) {
-        border-right: 2px solid white;
-        text-align: right;
-    }
-
-    .skillBar-container {
+    .skill-bar__container {
         flex-direction: column;
         align-items: flex-start;
         justify-content: space-around;
-        width: calc(100%/6*5);
     }
 
-    .skillBar {
-        width: 100%;
-        flex: 1;
-        display: flex;
-        gap: 10px;
-        justify-content: center;
+    .main--part .table__cell {
+        border-right:1px solid white;
+        text-align: right;
     }
 }

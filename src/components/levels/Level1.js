@@ -52,7 +52,7 @@ export default function Level1() {
                 headItems={['Development', 'Analytics', 'Online marketing']} 
                 rowItems={['EXPERT', 'ADVANCED', 'INTERMEDIATE', 'ELEMENTARY', 'BEGINNER']}
             >
-                <Slide className='skillBar' delay={500} direction='up' >
+                <Slide className='skill-bar' delay={500} direction='up' >
                     <SkillBar image={cactus} level={100} />
                     <SkillBar image={cactus} level={80} />
                     <SkillBar image={cactus} level={90} />
