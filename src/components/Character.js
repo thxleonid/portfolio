@@ -23,7 +23,6 @@ const Character = () => {
   let height;
 
   const visualCharacter = () => {
-    
 
     const characterLeft = getOffset(characterRef.current);
     const charImg = characterRef.current.firstChild;
@@ -50,7 +49,7 @@ const Character = () => {
     
   }
 
-  const getLevelHeight = () => {
+  const getLevelHeightOld = () => {
     const characterLeft = getOffset(characterRef.current);
     const characterRight = characterLeft + characterRef.current.offsetWidth;
 
@@ -80,6 +79,38 @@ const Character = () => {
     }
     
   }
+
+  const getLevelHeight = () => {
+    const characterLeft = getOffset(characterRef.current);
+    const characterRight = characterLeft + characterRef.current.offsetWidth;
+
+
+
+    console.log(`window.innerHeight: ${window.innerHeight}`)
+    
+    for (const level of levelElements.current) {
+      const levelOffset = getOffset(level);
+      const levelWidth = level.offsetWidth;
+
+  
+      if (characterRight >= levelOffset && characterLeft <= levelOffset + levelWidth) {
+        if (currentLevel === level.classList.item(1)) return;
+
+        currentLevel = `${level.classList.item(1)}`
+
+        LevelOptions[currentLevel].alignTop ? 
+          levels.current.style.top = `0px` : 
+          levels.current.style.top = `-${150 - LevelOptions[currentLevel].skyHeight}vh`;
+          // levels.current.style.top = `-${(150 - LevelOptions[currentLevel].skyHeight) / 100 * window.innerHeight}px`;
+  
+        height = 100 - LevelOptions[currentLevel].skyHeight
+        
+        console.log('new level')
+        break;
+      }
+    }
+    
+  }
   
   const positionCharacter = () => {
     //const scrollOffset = window.scrollX;
@@ -88,6 +119,8 @@ const Character = () => {
     
     getLevelHeight()
 
+
+    // PROCESSING JETPACK ITEM
     if (characterLeft < getOffset(jetpacks.current[0])) {
       characterRef.current.classList.remove('flying')
       jetpacks.current[0].style.opacity = 100;

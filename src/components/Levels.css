@@ -1,8 +1,13 @@
 .levels {
   display: flex;
-  height: 100vh;
-  overflow-y: hidden;
+  /* height: 100vh; */
+  /* overflow-y: hidden; */
   scroll-behavior: smooth; 
+
+  /* NEW */
+  position: relative;
+  transition: top 0.65s ease 0s;
+  top: 0;
 }
 
 .level {

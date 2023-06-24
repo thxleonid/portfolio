@@ -15,4 +15,14 @@ body {
   background-color: skyblue;
   
   width: max-content;
+
+
+
+  
+}
+
+#root {
+  /* NEW */
+  height: 100vh;
+  overflow-y: hidden;
 }
