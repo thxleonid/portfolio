@@ -69,7 +69,7 @@ import Experience from '../elements/experience';
 
                 <Experience text={{title: 'MARKETING DEVELOPMENT SPECIALIST', 
                                    company: 'Telia. Tallinn, Estonia',
-                                   period: 'July 2017 - May 2022', 
+                                   period: 'July 2017 - May 2023', 
                                    desc: '• Automating data processing with Google Ads API (JS)\n• Creating custom marketing tools in Python / VBA\n• Full list of Google Ads related marketing activities\n• Everyday cooperation with POs, Web team, Marketing Managers\n• Data analysis via Google Analytics\n• Creating automated reports with Google Data Studio, Tableau & Google Docs\n• Providing recommendations for website optimisation'
                                    }}/>
 
